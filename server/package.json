@@ -1,0 +1,30 @@
+{
+  "name": "face-app-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "v16.13.0"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "firebase-admin": "^10.2.0",
+    "nodemon": "^2.0.16",
+    "peer": "^0.6.1",
+    "peerjs": "^1.4.4",
+    "querystring": "^0.2.1",
+    "socket.io": "^4.5.0",
+    "uuid": "^8.3.2"
+  }
+}

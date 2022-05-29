@@ -1,0 +1,35 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-2 {
+  width: 50%;
+  height: 250px;
+  background-color: rgb(24, 196, 116);
+  margin: 10px;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+  .action-meetings {
+    width: 50%;
+  }
+
+  .timer {
+    margin-right: 1rem;
+  }
+}
+
+.timer {
+  width: 80%;
+}
