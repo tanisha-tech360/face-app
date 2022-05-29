@@ -109,8 +109,11 @@ export default function Attendance({ auth, db }) {
           console.log(dates)
           const analyticsTemp = {}
 
+          let totalSessions = 0;
+
           for (let date of dates) {
             const sessions = [...(await (await fetch(`${webUrl}getSessionsInDate/${uid}/${selection}/${date}`)).json())]
+            totalSessions += sessions.length
             for (let session of sessions) {
               const participantsInSession = await Promise.all(sessions.map(session => getDocs(collection(db, uid, selection, 'attendance', date, 'sessions', session, 'participants'))))
               for (let o of participantsInSession) {
@@ -128,7 +131,7 @@ export default function Attendance({ auth, db }) {
           }
 
           setAnalyticsList({
-            totalDates: dates.length,
+            totalSessions: totalSessions,
             analytics: analyticsTemp
           })
 
@@ -192,9 +195,9 @@ export default function Attendance({ auth, db }) {
                 <>
                   <div className='h-4' />
                   {Object.keys(analyticsList.analytics).map(participantEmail => (
-                    <Tooltip title={`Attended ${analyticsList.analytics[participantEmail]} sessions out of ${analyticsList.totalDates}`} key={participantEmail}>
+                    <Tooltip title={`Attended ${analyticsList.analytics[participantEmail]} sessions out of ${analyticsList.totalSessions}`} key={participantEmail}>
                       <div className="flex flex-col w-full items-center">
-                        <LinearProgress variant="determinate" sx={{ height: '1.5rem', width: '100%', borderRadius: '10px' }} value={getPercentage(analyticsList.analytics[participantEmail], analyticsList.totalDates)} />
+                        <LinearProgress variant="determinate" sx={{ height: '1.5rem', width: '100%', borderRadius: '10px' }} value={getPercentage(analyticsList.analytics[participantEmail], analyticsList.totalSessions)} />
                         <span className="text-lg">{participantEmail}</span>
                       </div>
                     </Tooltip>
