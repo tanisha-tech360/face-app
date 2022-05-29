@@ -262,7 +262,7 @@ export default function Attendance({ auth, db }) {
                 try {
                   return (await axios({
                     method: 'POST',
-                    url: `${webUrl}/get_uid_by_email`,
+                    url: `${webUrl}get_uid_by_email`,
                     headers: {},
                     data: {
                       email: email
